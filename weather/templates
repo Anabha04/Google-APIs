@@ -1,1 +1,193 @@
+index.html
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4a90e2, #50e3c2);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #00796b;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .search-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            border-radius: 25px;
+            border: 2px solid #00796b;
+            font-size: 16px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .search-bar button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background-color: #00796b;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .search-bar button:hover {
+            background-color: #004d40;
+        }
+        .weather-image {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://img.freepik.com/premium-vector/weather-cloud-sun-rain-lightning-logo-design-symbol-icon-template_23729-1786.jpg" alt="Weather App" class="weather-image">
+        <h1>Weather App</h1>
+        <div class="search-bar">
+            <input type="text" id="city" placeholder="Enter city name">
+            <button onclick="getWeather()">Get Weather</button>
+        </div>
+    </div>
+    <script>
+        function getWeather() {
+            const city = document.getElementById('city').value;
+            fetch('/weather', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ city: city })
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.body.innerHTML = data;
+            });
+        }
+    </script>
+</body>
+</html>
+
+result.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #50e3c2, #4a90e2);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #00796b;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .weather-info {
+            margin-bottom: 20px;
+        }
+        .weather-info img {
+            width: 150px;
+            height: 150px;
+        }
+        .weather-info h2 {
+            margin: 10px 0;
+            color: #004d40;
+            font-size: 1.8em;
+        }
+        .weather-info p {
+            margin: 5px 0;
+            font-size: 20px;
+        }
+        .back-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background-color: #00796b;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .back-button:hover {
+            background-color: #004d40;
+        }
+        .weather-image {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://img.freepik.com/premium-vector/weather-cloud-sun-rain-lightning-logo-design-symbol-icon-template_23729-1786.jpg" alt="Weather Results" class="weather-image">
+        <h1>Weather Results</h1>
+        <div class="weather-info">
+            <h2>{{ weather.city }}</h2>
+            <img src="http://openweathermap.org/img/wn/{{ weather.icon }}.png" alt="Weather Icon">
+            <p>Temperature: {{ weather.temperature }} °C</p>
+            <p>Description: {{ weather.description }}</p>
+        </div>
+        <a href="/" class="back-button">Back to Search</a>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
 

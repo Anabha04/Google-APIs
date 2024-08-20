@@ -1,10 +1,6 @@
-# Google-APIs
-GOAL: To make a habit tracker by using google calendar api
+# APIs
+GOAL: To use Tasty recipe API from rapid API to build a recipe website and understand how API's work.
 
-Progress: Sample website made, working on linking a personal calendar to the site using api key/code.
+Progress: The website has been succesfully made. The user can search for a desired dish and the recipe will be shown.
 
-Setbacks: We are facing errors when we try to link the api.
-
-facing internal server error
-The error encountering, InsecureTransportError, occurs because OAuth 2.0 requires the use of HTTPS for security reasons. When running a local Flask application, the default address http://127.0.0.1:5000 uses HTTP, which triggers this error.
-working on openssl to generate a Self-Signed Certificate
+Setbacks: Overcame errors in code and used API keys properly.

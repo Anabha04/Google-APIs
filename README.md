@@ -2,7 +2,7 @@
 WHAT IS AN API?
 An API, or application programming interface, is a set of rules or protocols that enables software applications to communicate with each other to exchange data, features and functionality. APIs also give application owners a simple, secure way to make their application data and functions available to departments within their organization.
 
-Phase-1
+-->Phase-1
 
 GOAL: To use Tasty recipe API from rapid API to build a recipe website and understand how API's work.
 
